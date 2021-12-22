@@ -18,7 +18,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 public class Login extends AppCompatActivity {
     Button buttonLogin;
     TextView textViewSignUp;
-    TextInputEditText  textInputEditTextUsername, textInputEditTextPassword;
+    TextInputEditText textInputEditTextUsername, textInputEditTextPassword;
     ProgressBar progressBar;
 
     @Override
@@ -34,7 +34,7 @@ public class Login extends AppCompatActivity {
         textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),Signup.class);
+                Intent intent = new Intent(getApplicationContext(), Signup.class);
                 startActivity(intent);
                 finish();
             }
@@ -48,7 +48,7 @@ public class Login extends AppCompatActivity {
                 password = String.valueOf(textInputEditTextPassword.getText());
 
 
-                if ( !username.equals("") && !password.equals("")) {
+                if (!username.equals("") && !password.equals("")) {
 
                     progressBar.setVisibility(View.VISIBLE);
 
@@ -68,7 +68,7 @@ public class Login extends AppCompatActivity {
                         data[0] = username;
                         data[1] = password;
 
-
+//local machine ipv4 used to inform the emulator of the localhost address//
                         PutData putData = new PutData("http://192.168.0.80/LogIn-SignUp-master/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
@@ -92,7 +92,6 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-
 
 
     }
