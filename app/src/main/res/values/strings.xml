@@ -9,4 +9,5 @@
     <string name="loginhere">Already have an account?<u>Login</u></string>
     <string name="signuphere">create a new account? sign up</string>
     <string name="welcome">welcome</string>
+    <string name="change">this is the new change</string>
 </resources>
