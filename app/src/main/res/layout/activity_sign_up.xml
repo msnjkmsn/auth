@@ -111,7 +111,6 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_pass"
                 android:drawableRight="@drawable/ic_pass"
-                android:fontFamily="@font/poppinsmedium"
                 tools:targetApi="jelly_bean" />
         </com.google.android.material.textfield.TextInputLayout>
 
