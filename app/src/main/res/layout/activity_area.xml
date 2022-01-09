@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:elegantTextHeight="true"
+            android:text="Areas"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            tools:elegantTextHeight="true" />
+
+        <Button
+            android:id="@+id/Area1"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="#09C398"
+            android:text="Area 1" />
+
+        <Button
+            android:id="@+id/Area2"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="#09C398"
+            android:text="Area 2" />
+
+        <Button
+            android:id="@+id/Area3"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="#09C398"
+            android:text="Area 3" />
+
+        <Button
+            android:id="@+id/Area4"
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="#09C398"
+            android:text="Area 4" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
