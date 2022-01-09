@@ -21,7 +21,12 @@
 
         <activity android:name=".Signup"
             android:theme="@style/Theme.Design.Light.NoActionBar"/>
-
+        <activity android:name=".Quiz2"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+        <activity android:name=".Quiz3"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
+        <activity android:name=".Quiz4"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name=".AreaHub"
             android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name=".MainActivity"
