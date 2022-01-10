@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -91,6 +92,26 @@ public class Quiz4 extends AppCompatActivity {
 
         questionNumber.setText("Questions attempted : " + questionAttempted + " /10");
         if(questionAttempted==10){
+            String[] field = new String[3];
+
+            field[0] = "userID";
+            field[1] = "score";
+            field[2] = "quizID";
+
+
+            String[] data = new String[3];
+            int quizID= 4;
+            int userID= 1;
+            data[0] = String.valueOf(userID) ;
+            data[1] = String.valueOf(currentScore);
+            data[2] = String.valueOf(quizID);
+            System.out.println("aaaaaa");
+            PutData putData = new PutData("http://192.168.1.15/LogIn-SignUp-master/getScore.php", "POST", field,  data );
+
+            if (putData.startPut()) {
+                if (putData.onComplete()) {
+                    System.out.println("AAAa");
+                }}
             showSheet();
         }
         question.setText(quizModalArrayList.get(currentPos).getQuestion());
