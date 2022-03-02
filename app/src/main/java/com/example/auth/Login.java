@@ -20,7 +20,8 @@ public class Login extends AppCompatActivity {
     TextView textViewSignUp;
     TextInputEditText textInputEditTextUsername, textInputEditTextPassword;
     ProgressBar progressBar;
-
+    public static String USERID = "ID";
+    public static String user = "user";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,11 +77,12 @@ public class Login extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 String result = putData.getResult();
                                 if (result.equals("Login Success")) {
+                                    user = username;
                                     PutData putData2 = new PutData("http://192.168.1.16/LogIn-SignUp-master/getID.php", "POST", field,  data );
 
                                     if (putData2.startPut()) {
                                         if (putData2.onComplete()) {
-                                            System.out.println(putData2.getResult());
+                                            USERID=putData2.getResult();
                                             Intent intent = new Intent(getApplicationContext(), AreaHub.class);
                                             startActivity(intent);
                                             finish();

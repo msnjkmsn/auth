@@ -1,4 +1,5 @@
 package com.example.auth;
+import static com.example.auth.Login.USERID;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -103,12 +104,12 @@ public class Quiz2 extends AppCompatActivity {
 
             String[] data = new String[3];
             int quizID= 2;
-            int userID= 1;
+            String userID= USERID;
             data[0] = String.valueOf(userID) ;
             data[1] = String.valueOf(currentScore);
             data[2] = String.valueOf(quizID);
             System.out.println("aaaaaa");
-            PutData putData = new PutData("http://192.168.1.15/LogIn-SignUp-master/getScore.php", "POST", field,  data );
+            PutData putData = new PutData("http://192.168.1.16/LogIn-SignUp-master/getScore.php", "POST", field,  data );
 
             if (putData.startPut()) {
                 if (putData.onComplete()) {
