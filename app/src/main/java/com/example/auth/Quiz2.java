@@ -21,7 +21,7 @@ import java.util.Random;
 public class Quiz2 extends AppCompatActivity {
 
     private TextView question, questionNumber;
-    private Button optionBtn1, optionBtn2, optionBtn3, optionBtn4;
+    private Button optionBtn1, optionBtn2, optionBtn3, optionBtn4,Username,TotalScore;
     private ArrayList<QuizModal> quizModalArrayList;
     Random random;
     int currentScore = 0;
@@ -32,6 +32,8 @@ public class Quiz2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Username = findViewById(R.id.Username);
+        TotalScore = findViewById(R.id.TotalScore);
         question = findViewById(R.id.question);
         questionNumber = findViewById(R.id.questionAttempted);
         optionBtn1 = findViewById(R.id.option1);
@@ -40,6 +42,7 @@ public class Quiz2 extends AppCompatActivity {
         optionBtn4 = findViewById(R.id.option4);
         quizModalArrayList = new ArrayList<>();
         random = new Random();
+        Username.setText(Login.user);
         getQuizQuestion(quizModalArrayList);
         currentPos = random.nextInt(quizModalArrayList.size());
         setDataToViews(currentPos);
@@ -109,7 +112,7 @@ public class Quiz2 extends AppCompatActivity {
             data[1] = String.valueOf(currentScore);
             data[2] = String.valueOf(quizID);
             System.out.println("aaaaaa");
-            PutData putData = new PutData("http://192.168.1.16/LogIn-SignUp-master/getScore.php", "POST", field,  data );
+            PutData putData = new PutData("http://192.168.1.14/LogIn-SignUp-master/getScore.php", "POST", field,  data );
 
             if (putData.startPut()) {
                 if (putData.onComplete()) {

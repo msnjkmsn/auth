@@ -6,14 +6,42 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/topbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="top"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/username" />
+
+        <Button
+            android:id="@+id/TotalScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TotalScore" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/areabox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="331dp">
 
         <TextView
             android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="62dp"
+            android:layout_gravity="top"
             android:elegantTextHeight="true"
             android:text="Areas"
             android:textAlignment="center"
@@ -25,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:background="#09C398"
-            android:text="Area 1" />
+            android:text="Area 1"
+            android:textColor="#4527A0" />
 
         <Button
             android:id="@+id/Area2"
@@ -47,6 +76,31 @@
             android:layout_height="78dp"
             android:background="#5609C3"
             android:text="Area 4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottombar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="258dp">
+
+        <Button
+            android:id="@+id/Leaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Leaderboard" />
+
+        <Button
+            android:id="@+id/levelselect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Level Select" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
