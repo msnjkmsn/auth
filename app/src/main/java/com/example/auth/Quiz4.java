@@ -132,6 +132,7 @@ public class Quiz4 extends AppCompatActivity {
                     if (putData2.startPut()) {
                         if (putData2.onComplete()) {
                             MainActivity.Total=putData2.getResult();
+                            TotalScore.setText("EXP: "+MainActivity.Total);
                         }}
 
                 }}
