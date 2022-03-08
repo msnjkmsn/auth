@@ -70,7 +70,7 @@ public class Login extends AppCompatActivity {
                         data[1] = password;
 
 //local machine ipv4 used to inform the emulator of the localhost address//
-                        PutData putData = new PutData("http://192.168.1.14/LogIn-SignUp-master/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.1.7/LogIn-SignUp-master/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 System.out.println("Username is " +data[0] +"Pass is " + data[1]);
@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity {
                                 String result = putData.getResult();
                                 if (result.equals("Login Success")) {
                                     user = username;
-                                    PutData putData2 = new PutData("http://192.168.1.14/LogIn-SignUp-master/getID.php", "POST", field,  data );
+                                    PutData putData2 = new PutData("http://192.168.1.7/LogIn-SignUp-master/getID.php", "POST", field,  data );
 
                                     if (putData2.startPut()) {
                                         if (putData2.onComplete()) {

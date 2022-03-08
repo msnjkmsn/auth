@@ -1,7 +1,10 @@
 package com.example.auth;
 
+import static com.example.auth.Login.USERID;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +21,7 @@ import java.util.Random;
 public class Quiz4 extends AppCompatActivity {
 
     private TextView question, questionNumber;
-    private Button optionBtn1, optionBtn2, optionBtn3, optionBtn4;
+    private Button optionBtn1, optionBtn2, optionBtn3, optionBtn4,Username,TotalScore,Area,Leaderboard;
     private ArrayList<QuizModal> quizModalArrayList;
     Random random;
     int currentScore = 0;
@@ -29,6 +32,9 @@ public class Quiz4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Username = findViewById(R.id.Username);
+        TotalScore = findViewById(R.id.TotalScore);
+        Area = findViewById(R.id.levelselect);
         question = findViewById(R.id.question);
         questionNumber = findViewById(R.id.questionAttempted);
         optionBtn1 = findViewById(R.id.option1);
@@ -37,6 +43,18 @@ public class Quiz4 extends AppCompatActivity {
         optionBtn4 = findViewById(R.id.option4);
         quizModalArrayList = new ArrayList<>();
         random = new Random();
+
+        Area.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AreaHub.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        TotalScore.setText("EXP: "+MainActivity.Total);
+        Username.setText(Login.user);
         getQuizQuestion(quizModalArrayList);
         currentPos = random.nextInt(quizModalArrayList.size());
         setDataToViews(currentPos);
@@ -101,16 +119,21 @@ public class Quiz4 extends AppCompatActivity {
 
             String[] data = new String[3];
             int quizID= 4;
-            int userID= 1;
+            String userID= USERID;
             data[0] = String.valueOf(userID) ;
             data[1] = String.valueOf(currentScore);
             data[2] = String.valueOf(quizID);
             System.out.println("aaaaaa");
-            PutData putData = new PutData("http://192.168.1.15/LogIn-SignUp-master/getScore.php", "POST", field,  data );
-
+            PutData putData = new PutData("http://192.168.1.7/LogIn-SignUp-master/getScore.php", "POST", field,  data );
             if (putData.startPut()) {
                 if (putData.onComplete()) {
-                    System.out.println("AAAa");
+                    PutData putData2 = new PutData("http://192.168.1.7/LogIn-SignUp-master/getTotalScore.php", "POST", field,  data );
+
+                    if (putData2.startPut()) {
+                        if (putData2.onComplete()) {
+                            MainActivity.Total=putData2.getResult();
+                        }}
+
                 }}
             showSheet();
         }
