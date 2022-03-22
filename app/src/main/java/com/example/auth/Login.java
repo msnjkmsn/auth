@@ -22,6 +22,7 @@ public class Login extends AppCompatActivity {
     ProgressBar progressBar;
     public static String USERID = "ID";
     public static String user = "user";
+    public static String accType = "accType";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +71,7 @@ public class Login extends AppCompatActivity {
                         data[1] = password;
 
 //local machine ipv4 used to inform the emulator of the localhost address//
-                        PutData putData = new PutData("http://192.168.1.7/LogIn-SignUp-master/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.1.5/LogIn-SignUp-master/login.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 System.out.println("Username is " +data[0] +"Pass is " + data[1]);
@@ -78,14 +79,33 @@ public class Login extends AppCompatActivity {
                                 String result = putData.getResult();
                                 if (result.equals("Login Success")) {
                                     user = username;
-                                    PutData putData2 = new PutData("http://192.168.1.7/LogIn-SignUp-master/getID.php", "POST", field,  data );
+                                    PutData putData2 = new PutData("http://192.168.1.5/LogIn-SignUp-master/getID.php", "POST", field,  data );
 
                                     if (putData2.startPut()) {
                                         if (putData2.onComplete()) {
                                             USERID=putData2.getResult();
-                                            Intent intent = new Intent(getApplicationContext(), AreaHub.class);
-                                            startActivity(intent);
-                                            finish();
+
+
+                                            PutData putData3 = new PutData("http://192.168.1.5/LogIn-SignUp-master/getAccountType.php", "POST", field,  data );
+
+                                            if (putData3.startPut()) {
+                                                if (putData3.onComplete()) {
+                                                    String result2 = putData3.getResult();
+                                                    System.out.println(result2);
+                                                    if (result2.equals("student")) {
+                                                        accType = result2;
+                                                        Intent intent = new Intent(getApplicationContext(), AreaHub.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    } else if (result2.equals("teacher")) {
+                                                        accType = result2;
+                                                        Intent intent = new Intent(getApplicationContext(), TeacherHub.class);
+                                                        startActivity(intent);
+                                                        finish();
+                                                    }
+                                                }}
+
+
                                        }}
 
 
