@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
-    public static String Total = "user";
+public class Quiz3 extends AppCompatActivity {
+
     private TextView question, questionNumber;
     private Button optionBtn1, optionBtn2, optionBtn3, optionBtn4,Username,TotalScore,Area,Leaderboard;
     private ArrayList<QuizModal> quizModalArrayList;
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             String[] data = new String[3];
-            int quizID= 1;
+            int quizID= 3;
             String userID= USERID;
             data[0] = String.valueOf(userID) ;
             data[1] = String.valueOf(currentScore);
@@ -147,14 +147,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void getQuizQuestion(ArrayList<QuizModal> quizModalArrayList) {
 
-        quizModalArrayList.add(new QuizModal("Which of the following keyword is not associated with IF statement?", "ELSE", "THEN", "ELSE IF", "WHEN", "WHEN"));
-        quizModalArrayList.add(new QuizModal("An ELSE statement must be preceded by ___ statement in Java.", "IF", "ELSE IF", "IF or ELSE IF", "NONE", "IF or ELSE IF"));
-        quizModalArrayList.add(new QuizModal("An IF or ELSE IF statement accepts ___ as input before branching.", "boolean", "int", "char", "float", "boolean"));
-        quizModalArrayList.add(new QuizModal("An IF statement in Java is also a ___ statement.", "boolean", "conditional", "iterative", "optional", "conditional"));
+        quizModalArrayList.add(new QuizModal("To output text to a line then move to the next line in java you use... ", "System.out.println", "Println", "System.out.print", "print", "System.out.println"));
+        quizModalArrayList.add(new QuizModal("To output text to a line in java you use...", "System.out.println", "Println", "System.out.print", "print", "System.out.print"));
+        quizModalArrayList.add(new QuizModal("If you wanted to print the words Hello World what would you do...",  "System.out.println(Hello World);", "System.out.println('Hello World');", "System.out.println(Hello + World);", "System.out.println('Hello + World');", "System.out.println('Hello World');"));
+
     }
 
     private void showSheet(){
-        BottomSheetDialog bottomSheetDialog  = new BottomSheetDialog(MainActivity.this);
+        BottomSheetDialog bottomSheetDialog  = new BottomSheetDialog(Quiz3.this);
         View bottomSheetView  = getLayoutInflater().from(getApplicationContext()).inflate(R.layout.score,(LinearLayout)findViewById(R.id.LLScore));
         TextView scoreTV  =  bottomSheetView.findViewById(R.id.score);
         Button restartQuiz = bottomSheetView.findViewById(R.id.restartQuiz);
